@@ -1,6 +1,9 @@
 #!/bin/sh
 [ -f /etc/banner ] && cat /etc/banner
 
+# Display the Mesh Extender's SID on login
+echo -e "\nI am Mesh Extender *$(servald id self | tail -n 1 | head -c 12)"
+
 export PATH=/usr/bin:/usr/sbin:/bin:/sbin
 export HOME=$(grep -e "^${USER:-root}:" /etc/passwd | cut -d ":" -f 6)
 export HOME=${HOME:-/root}
